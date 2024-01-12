@@ -1,5 +1,5 @@
 name: Upload Impacted Targets
-on: pull_request
+on: pull_request_target
 
 jobs:
   compute_impacted_targets:
