@@ -1,9 +1,13 @@
 name: trunk merge checks
-on: pull_request
+on:
+  pull_request: {}
+  push:
+    branches:
+      - trunk-merge/**
 
 jobs:
   test:
-    name: test
+    name: merge-test-1
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -11,4 +15,16 @@ jobs:
 
       - name: run a test
         run: |
-          false
+          git ls-remote
+          git show HEAD
+
+  test:
+    name: merge-test-2
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: run a test
+        run: |
+          true

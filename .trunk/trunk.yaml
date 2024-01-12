@@ -3,5 +3,7 @@ cli:
   version: 1.18.1
 api:
   address: api.trunk-staging.io:8443
-merge: 
-  required_statuses: []
+merge:
+  required_statuses:
+    - merge-test-1
+    - merge-test-2
