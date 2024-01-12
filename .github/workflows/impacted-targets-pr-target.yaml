@@ -1,0 +1,22 @@
+name: Upload Impacted Targets (pull_request_target)
+on: pull_request_target
+
+jobs:
+  compute_impacted_targets:
+    name: Compute Impacted Targets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Compute Impacted Targets
+        uses: trunk-io/merge-action@merge-fork-prs
+        with:
+          # Use your Trunk repo or org API token to authenticate impacted targets uploads.
+          # This secret should be provided as a GitHub secret.
+          # See https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions.
+          trunk-token: ${{ secrets.TRUNK_API_TOKEN }}
+        env:
+          API_URL: https://api.trunk-staging.io:443/v1/setImpactedTargets
