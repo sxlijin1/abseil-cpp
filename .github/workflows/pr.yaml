@@ -6,7 +6,7 @@ on:
       - trunk-merge/**
 
 jobs:
-  test:
+  test1:
     name: merge-test-1
     runs-on: ubuntu-latest
     steps:
@@ -18,7 +18,7 @@ jobs:
           git ls-remote
           git show HEAD
 
-  test:
+  test2:
     name: merge-test-2
     runs-on: ubuntu-latest
     steps:
